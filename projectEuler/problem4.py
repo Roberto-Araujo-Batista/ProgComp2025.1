@@ -1,18 +1,27 @@
-num1 = 91
-num2 = 99
+#mostra o maior número polindromo formado pelo produto de dois números de 3 algarismos
+#autor: roberto araujo batista
 
-resultado = num1 * num2
+maior = 0
+imaior =0
+jmaior =0
+for i in range(100, 1000):
+    for j in range(100, 1000):
 
-print(resultado)
+        numero = i*j
+        aux = numero #variavel que receberá o numero para poder fazer a conta sem perdê-lo
+        inverso = 0
 
 
-#invertendo um número para ver se é polindromico
-tmp = resultado
-novoNum = tmp %10
+        while aux /10!=0:
+            algarismo = aux %10
+            aux = aux //10
+            inverso = inverso *10 + algarismo
 
-while tmp %10 !=0:
-    algarismo = tmp%10
-    tmp = tmp //10
-    novoNum = novoNum*10 + algarismo
+        if inverso == numero:
+            if maior < numero:
+                maior = numero
+                imaior = i
+                jmaior = j
 
-print(unidade, dezena, tmp)
+print('o maior número polidromo é: ', maior, 'gerado por: ', imaior,'e ', jmaior)
+
