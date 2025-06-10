@@ -1,0 +1,9 @@
+numero = int(input('entre com um numero: '))
+aux = numero
+novoNumero = 0
+while aux != 0:
+    algarismo = aux %10
+    aux = aux //10
+    novoNumero = novoNumero *10 + algarismo
+if novoNumero == numero:
+    print(numero, 'é um número palindromo, lido de trás para frente é: ', novoNumero)
