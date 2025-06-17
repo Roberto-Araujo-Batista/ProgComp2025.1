@@ -1,10 +1,12 @@
 import random
 palavras = ('abacate', 'lima', 'abacaxi')
-segredo = palavras[random.randint(0,2)]
+segredo = palavras[random.randint(0,len(palavras)-1)] #palavra aleatoria dentro da variavel palavras
 visivel = '-'*len(segredo)
 
+
+tentativas = 4
 #programa para retornar os resultados
-while visivel != segredo:
+while tentativas > 0:
     print(visivel)
     letra = input('digite uma letra: ')
     indice = 0
@@ -17,6 +19,11 @@ while visivel != segredo:
             novavisivel = novavisivel + visivel[indice]
         indice = indice + 1
     visivel = novavisivel
-print(visivel)
-print('você conseguiu acertar a palavra, meus parabéns!!!')
+    tentativas = tentativas -1
+
+
+if visivel == segredo:
+    print('meus parabéns! você acertou')
+else: 
+    print('uma pena, você errou :(, tente novamente')
     
