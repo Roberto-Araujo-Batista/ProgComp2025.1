@@ -13,4 +13,43 @@ for palavra in palavras:
     else:
         contagem[palavra] = contagem[palavra] + 1
 
-print(contagem)
+
+#organizar o dicionario em ordem decrescente, baseado nos valores transformando-os primeiro em listas para usar a função .sort()
+ordem = list(contagem.items())
+ordem.sort(key = lambda valor:valor[1], reverse = True)
+ordem = dict(ordem)
+
+#pegar os cinco primeiros, consequentemente, os cinco maiores
+contar = 4
+cincomaiores = dict()
+
+for chaves in ordem:
+    cincomaiores[chaves] = ordem[chaves]
+
+    if contar == 0:
+        break
+    else:
+        contar = contar -1
+
+print(cincomaiores)
+
+
+
+
+
+
+
+
+#programa simples de pegar o maior não funciona, já que vai pegar apenas um elemento
+'''
+maior = 0
+cincomaiores = dict()
+
+
+
+
+for palavra in contagem.keys():
+    if (contagem[palavra] > maior) and not(palavra in cincomaiores):
+        maior = contagem[palavra]
+        cincomaiores[palavra] = contagem[palavra]
+print(cincomaiores)'''
