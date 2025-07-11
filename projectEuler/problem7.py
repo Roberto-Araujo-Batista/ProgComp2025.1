@@ -1,4 +1,3 @@
-import random
 #fazer um código que liste os números primos e mostre o 10001 número primo
 
 #listar número primos
@@ -7,7 +6,7 @@ import random
 #descobrir se um número é primo
 
 primos = []
-limite = 10002
+limite = 10000
 
 numero = 2
 while len(primos) <= limite:
@@ -25,4 +24,4 @@ while len(primos) <= limite:
     
     numero = numero +1
 
-print(len(primos), primos[0])
+print(primos)
