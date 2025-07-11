@@ -6,7 +6,7 @@
 #descobrir se um número é primo
 
 primos = []
-limite = 10000
+limite = 10000 #já que o primeiro número é 0 então o 10001 está na pos 10000
 
 numero = 2
 while len(primos) <= limite:
@@ -24,4 +24,4 @@ while len(primos) <= limite:
     
     numero = numero +1
 
-print(primos)
+print(primos[limite])
