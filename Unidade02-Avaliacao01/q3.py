@@ -67,6 +67,11 @@ def exibir(palavra): # Puxa cada lista que vai ser criada com a palavra e cor e 
     for fundo, letra, padrao in palavra: #como a lista tem 3 elementos, o for irá para de 3 em 3
         print(f'{fundo}{letra}{padrao}', end='')
 
+
+
+
+
+
 #VARIÁVEIS
 # =====================================================================================================
 # Cores:
@@ -81,14 +86,16 @@ padrao     = '\033[0m'  # Resetar
 
 tentativas = 0
 
-d_tentativas = { # Dict para formatar a mensagem final com base na quantidade de tentativas.
-                1:'Impossível'    ,
-                2:'Ninja'         ,
-                3:'Impressionante',
-                4:'Interessante'  ,
-                5:'Pode melhorar' ,
-                6: 'Foi por pouco',
-                7:f'Palavras: {segredo_1}, {segredo_2}'}
+def func_tentativas(tentativas):    
+    d_tentativas = { # Dict para formatar a mensagem final com base na quantidade de tentativas.
+                    1:'Impossível'    ,
+                    2:'Ninja'         ,
+                    3:'Impressionante',
+                    4:'Interessante'  ,
+                    5:'Pode melhorar' ,
+                    6: 'Foi por pouco',
+                    7:f'Palavras: {segredo_1}, {segredo_2}'}
+    return d_tentativas[tentativas]
 
 
 # =====================================================================================================
@@ -137,4 +144,4 @@ while tentativas != 7:
     if l_segredos == l_resposta:
         break
 
-print(f'\033[44m{d_tentativas[tentativas]} {padrao}')
+print(f'\033[44m{func_tentativas(tentativas)} {padrao}')
