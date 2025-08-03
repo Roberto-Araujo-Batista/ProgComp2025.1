@@ -25,9 +25,9 @@ Em todas as operações que requerem entrada de CPF e MAC adresses, valide-os
 '''
 
 
-def cadastrar_cpf(dados):
+def cadastrar_cpf(banco):
+    global dados
     banco = dados
-    print(type(banco))
 
     #requisitos do cpf: ter 11 dígitos
     #se for a entrada de um inteiro ele corta o 0 inicial
@@ -69,22 +69,61 @@ def remover_cpf(banco):
     else:
         print('Esse CPF não existe no banco de dados')
 
-        
-
 def listar_cpf(dados):
     print('lista de CPF no banco de dados: ')
-    for cpf in dados.keys():
-        print(cpf)
-    input('pressione enter para voltar ao menu principal')    
+    if len(dados) == 0:
+        print('a lista está vazia')
+    else: 
+        for cpf in dados.keys():
+            print(cpf)
+        input('pressione enter para voltar ao menu principal')    
 
-def adicionar_mac(dados):
-    print('programa para adicionar mac a um cpf ainda não foi criado')
+def adicionar_mac(banco):
+    global dados
+    cpf = input('Digite o cpf: ')
+
+    if cpf in dados.keys():
+        print(dados[cpf])
+        mac = input('digite o mac a ser adicionado: \n')
+        dados[cpf] = dados[cpf] + [mac]
+        print(dados[cpf])
+        input('')
+    else:
+        input('esse cpf não está no banco de dados, pressione enter para voltar ao menu principal')
+
+
 
 def remover_mac():
-    print('remover mac de um cpf ainda não foi criado')
+    global dados
+    
+    cpf = input('Digite o cpf: ')
+    
+    #exibir os macs do cpf
+    pos = 0
+    while pos < len(dados[cpf]):
+        mac = dados[cpf][pos]
+        print(f'{pos}. {mac}')
+        pos = pos +1
+    pos = int(input('Qual mac você deseja remover?'))
+
+    del dados[cpf][pos]
+    print(dados[cpf])
+
+
+
 
 def listar_mac():
-    print('programa para listar mac de um cpf ainda não foi criado')
+    global dados
+    
+    cpf = input('Digite o cpf: ')
+    if dados[cpf] == []:
+        print('a lista está vazia')
+    #exibir os macs do cpf
+    else:
+        pos = 0
+        while pos < len(dados[cpf]):
+            print(f'{pos}. {mac}')
+            pos = pos +1
 
 
 '''
@@ -124,11 +163,11 @@ while True:
     if menu == 0:
         break
     if menu == 1:
-        dados = cadastrar_cpf(dados)
+        cadastrar_cpf(dados)
     elif menu == 2:
         remover_cpf(dados)
     elif menu == 3:
-        dados = listar_cpf(dados)
+        listar_cpf(dados)
     elif menu == 4:
         adicionar_mac(dados)
     elif menu == 5:
