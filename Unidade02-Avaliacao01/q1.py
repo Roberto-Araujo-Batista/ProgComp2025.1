@@ -29,10 +29,8 @@ def cadastrar_cpf(dados):
     banco = dados
 
     #requisitos do cpf: ter 11 dígitos
-
     #se for a entrada de um inteiro ele corta o 0 inicial
     cpf = input('digite o cpf que você quer cadastrar: ')
-
 
     if cpf in banco.keys():
         print(f'esse {cpf} já está cadastrado no banco de dados.')
@@ -43,9 +41,31 @@ def cadastrar_cpf(dados):
         return banco
     
 
-def remover_cpf():
+def remover_cpf(dados):
     #remover cpf apenas se a lista estiver vazia
-    print('programa para remover o cpf ainda não foi criado')
+    banco = dados
+    cpf = input('digite o cpf que você deseja remover: ')
+    
+    if cpf in banco.keys():
+        if banco[cpf] == []: #se a lista de mac adrresses estiver vazia, você pode excluir cpf
+            
+            while True:
+                try:
+                    opcao = int(input(f'você tem certeza que deseja remover esse cpf? \n1.Sim\n2.Não\nEscolha: '))
+                    if opcao == 1:
+                        banco.pop(cpf)
+                        break
+                    elif opcao == 2:
+                        print('operacao cancelada')
+                        break
+                    else:
+                        print('escolha uma opcao válida')
+                except:
+                    print('erro de digitação')
+            
+            print(banco)
+
+        
 
 def listar_cpf():
     print('programa para listar cpf ainda não foi criado')
@@ -88,28 +108,30 @@ while True:
         0.Sair
         ''')
         menu = int(input('digite uma opção: '))
-
-        if menu == 0:
-            break
-        if menu == 1:
-            dados = cadastrar_cpf(dados)
-        elif menu == 2:
-            remover_cpf()
-        elif menu == 3:
-            listar_cpf()
-        elif menu == 4:
-            adicionar_mac()
-        elif menu == 5:
-            remover_mac()
-        elif menu == 6:
-            listar_mac()
-        else:
-            print('essa opção não existe')
-
-
-
     except:
         print('comando inválido')
+
+
+    #as funções irão atribuir um novo valor para a variável global
+    if menu == 0:
+        break
+    if menu == 1:
+        dados = cadastrar_cpf(dados)
+    elif menu == 2:
+        dados = remover_cpf(dados)
+    elif menu == 3:
+        listar_cpf()
+    elif menu == 4:
+        adicionar_mac()
+    elif menu == 5:
+        remover_mac()
+    elif menu == 6:
+        listar_mac()
+    else:
+        print('essa opção não existe')
+
+
+
 
 
 
