@@ -53,8 +53,7 @@ def remover_cpf(dados):
                 try:
                     opcao = int(input(f'você tem certeza que deseja remover esse cpf? \n1.Sim\n2.Não\nEscolha: '))
                     if opcao == 1:
-                        banco.pop(cpf)
-                        break
+                        return banco.pop(cpf)
                     elif opcao == 2:
                         print('operacao cancelada')
                         break
@@ -62,13 +61,18 @@ def remover_cpf(dados):
                         print('escolha uma opcao válida')
                 except:
                     print('erro de digitação')
-            
-            print(banco)
+        else:
+            print('Para excluir o cpf, você precisa excluir os endereços MAC vinculados a ele')
+    else:
+        print('Esse CPF não existe no banco de dados')
 
         
 
-def listar_cpf():
-    print('programa para listar cpf ainda não foi criado')
+def listar_cpf(dados):
+    print('lista de CPF no banco de dados: ')
+    for cpf in dados.keys():
+        print(cpf)
+    input('pressione enter para voltar ao menu principal')    
 
 def adicionar_mac():
     print('programa para adicionar mac a um cpf ainda não foi criado')
@@ -120,9 +124,9 @@ while True:
     elif menu == 2:
         dados = remover_cpf(dados)
     elif menu == 3:
-        listar_cpf()
+        menu = listar_cpf(dados)
     elif menu == 4:
-        adicionar_mac()
+        adicionar_mac(dados)
     elif menu == 5:
         remover_mac()
     elif menu == 6:
