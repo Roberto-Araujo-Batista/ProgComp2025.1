@@ -27,13 +27,14 @@ Em todas as operações que requerem entrada de CPF e MAC adresses, valide-os
 
 def cadastrar_cpf(dados):
     banco = dados
+    print(type(banco))
 
     #requisitos do cpf: ter 11 dígitos
     #se for a entrada de um inteiro ele corta o 0 inicial
     cpf = input('digite o cpf que você quer cadastrar: ')
 
     if cpf in banco.keys():
-        print(f'esse {cpf} já está cadastrado no banco de dados.')
+        print(f'esse cpf já está cadastrado no banco de dados.')
         input('pressione enter')
     else:
         input(f'pronto, {cpf} cadastrado \npressione enter para seguir no menu principal')
@@ -41,22 +42,20 @@ def cadastrar_cpf(dados):
         return banco
     
 
-def remover_cpf(dados):
+def remover_cpf(banco):
     #remover cpf apenas se a lista estiver vazia
-    banco = dados
+    global dados
     cpf = input('digite o cpf que você deseja remover: ')
     
-    if cpf in banco.keys():
-        if banco[cpf] == []: #se a lista de mac adrresses estiver vazia, você pode excluir cpf
+    if cpf in dados.keys():
+        if dados[cpf] == []: #se a lista de mac adrresses estiver vazia, você pode excluir cpf
             
             while True:
                 try:
                     opcao = int(input(f'você tem certeza que deseja remover esse cpf? \n1.Sim\n2.Não\nEscolha: '))
                     if opcao == 1:
-                        if len(banco) == 1:
-                            return {}  #para resolver problema do Nonetype Error
-                        else:
-                            return banco.pop(cpf)
+                        del dados[cpf]
+                        return dados
                     
                     elif opcao == 2:
                         print('operacao cancelada')
@@ -120,15 +119,16 @@ while True:
         print('comando inválido')
 
 
+    print(dados)
     #as funções irão atribuir um novo valor para a variável global
     if menu == 0:
         break
     if menu == 1:
         dados = cadastrar_cpf(dados)
     elif menu == 2:
-        dados = remover_cpf(dados)
+        remover_cpf(dados)
     elif menu == 3:
-        menu = listar_cpf(dados)
+        dados = listar_cpf(dados)
     elif menu == 4:
         adicionar_mac(dados)
     elif menu == 5:
