@@ -25,8 +25,23 @@ Em todas as operações que requerem entrada de CPF e MAC adresses, valide-os
 '''
 
 
-def cadastrar_cpf():
-    print('programa para cadastrar cpf ainda não foi criado')
+def cadastrar_cpf(dados):
+    banco = dados
+
+    #requisitos do cpf: ter 11 dígitos
+
+    #se for a entrada de um inteiro ele corta o 0 inicial
+    cpf = input('digite o cpf que você quer cadastrar: ')
+
+
+    if cpf in banco.keys():
+        print(f'esse {cpf} já está cadastrado no banco de dados.')
+        input('pressione enter')
+    else:
+        input(f'pronto, {cpf} cadastrado \npressione enter para seguir no menu principal')
+        banco[cpf] = []
+        return banco
+    
 
 def remover_cpf():
     #remover cpf apenas se a lista estiver vazia
@@ -55,15 +70,15 @@ dados[cpf] = dados[cpf] + ['0-1A-2B-3C-4D-5E']
 print(dados)
 '''
 
-
+dados = dict() #dicionario que irá receber o banco de dados
 
 while True: 
     try: 
         #criar primeiro um menu para saber para onde o usuário irá e por onde começar a programar
 
-        #castras cpf, remover cpf, listar cpf, adicionar mac, remover mac, listar mac
+        #cadastrar cpf, remover cpf, listar cpf, adicionar mac, remover mac, listar mac
         print('''
-        MENU
+        MENU PRINCIPAL
         1.Cadastrar CPF
         2.Remover CPF
         3.Lista de CPF cadastrados
@@ -77,7 +92,7 @@ while True:
         if menu == 0:
             break
         if menu == 1:
-            cadastrar_cpf()
+            dados = cadastrar_cpf(dados)
         elif menu == 2:
             remover_cpf()
         elif menu == 3:
