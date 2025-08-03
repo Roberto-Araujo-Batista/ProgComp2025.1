@@ -53,7 +53,11 @@ def remover_cpf(dados):
                 try:
                     opcao = int(input(f'você tem certeza que deseja remover esse cpf? \n1.Sim\n2.Não\nEscolha: '))
                     if opcao == 1:
-                        return banco.pop(cpf)
+                        if len(banco) == 1:
+                            return {}  #para resolver problema do Nonetype Error
+                        else:
+                            return banco.pop(cpf)
+                    
                     elif opcao == 2:
                         print('operacao cancelada')
                         break
@@ -74,7 +78,7 @@ def listar_cpf(dados):
         print(cpf)
     input('pressione enter para voltar ao menu principal')    
 
-def adicionar_mac():
+def adicionar_mac(dados):
     print('programa para adicionar mac a um cpf ainda não foi criado')
 
 def remover_mac():
