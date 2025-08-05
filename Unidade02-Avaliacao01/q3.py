@@ -15,7 +15,7 @@ com as palavras válidas (se o usuário digitar outra, não será aceita).
 #
 #   Tratamento de erros......NOK
 #     --> Palavra válida.....NOK
-#     --> Palavra Repetida...NOK
+#     --> Palavra Repetida....OK
 #     --> Tamanho.............OK
 #     --> Tentativas..........OK
 #   Cores.....................OK
@@ -109,12 +109,16 @@ print(segredo_1, segredo_2)
 l_resposta = [[segredo_1], [segredo_2]]
 l_segredos = [[], []]
 
+entradas_palavras = list()
+
 while tentativas != 7:
     l_palavra = [[],[]] # resetar toda vez para a palavra não entrar na outra lista novamente.
     while True:
         print(f'você tem {tentativas+1}/7 chances')
         termo = (input('Escreva uma palavra de 5 letras: ')).upper() # Pede o termo.
-        if len(termo) == 5 and termo.isalpha(): #verifica se é uma letra do alfabeto
+
+        if (len(termo) == 5) and (termo.isalpha()) and not(termo in entradas_palavras): #verifica se é uma letra do alfabeto e se é repetida
+            entradas_palavras = entradas_palavras + [termo]
             break
         else:
             print('Termo inválido.')
