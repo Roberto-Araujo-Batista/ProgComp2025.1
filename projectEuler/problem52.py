@@ -40,3 +40,4 @@ while (len(lstnumero) != multiplicador):
             igual = False 
         contador = contador + 1
 
+
