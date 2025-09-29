@@ -1,3 +1,5 @@
+#programa para converter ips em decimal para lista
+
 def convertInt(ipstring : str) -> int:
     octetos = ipstring.split('.')
     ipbinario = []

@@ -1,3 +1,4 @@
+#programa para transformar ip de string para inteiro
 def convertInt(ipstring : str) -> int:
     octetos = ipstring.split('.')
     ipbinario = 0

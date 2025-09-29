@@ -1,3 +1,4 @@
+#programa para transformar número em binario
 def transformarBinario(numero):
     novonumero = numero
     expoente = 7
